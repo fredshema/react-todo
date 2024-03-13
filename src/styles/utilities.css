@@ -1,0 +1,68 @@
+/** Padding */
+.p-3 {
+  padding: 1rem;
+}
+
+.px-3 {
+  padding-right: 1rem;
+  padding-left: 1rem;
+}
+
+.px-5 {
+  padding-right: 2rem;
+  padding-left: 2rem;
+}
+
+.py-3 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+/** Flex */
+.row {
+  display: flex;
+}
+
+.col-12{
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+/** Text style */
+.text-center {
+  text-align: center;
+}
+
+.text-lg {
+  font-size: 1.5rem;
+}
+
+/** Image */
+.img-fluid {
+  max-width: 100%;
+  height: 100%;
+}
+
+/** Cursor */
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/** Round */
+.rounded {
+  border-radius: 5px;
+}
+
+/** Lists */
+.list-group {
+  list-style: none;
+  padding-left: 0;
+}
