@@ -1,8 +1,18 @@
-.todo {
+.todos-list {
   background-color: var(--very-dark-gray-blue);
+  margin-top: 2rem;
+}
+
+.todo {
   padding: 1rem;
+  border-radius: none;
+  border-bottom: 1px solid var(--dark-gray-blue);
 
   .check {
     margin-right: 1rem;
+  }
+
+  input[type="checkbox"]:checked + span {
+    text-decoration: line-through;
   }
 }

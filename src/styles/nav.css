@@ -1,0 +1,27 @@
+#nav {
+  .navs {
+    max-width: 230px;
+    margin: 0 auto;
+  }
+
+  a {
+    color: var(--light-gray-blue);
+
+    &:hover,
+    &.active {
+      color: var(--active-link-color);
+    }
+  }
+
+  @media screen and (max-width: 550px) {
+    & {
+      flex-direction: column;
+      place-content: center;
+      gap: 1rem;
+
+      & > div {
+        text-align: center;
+      }
+    }
+  }
+}

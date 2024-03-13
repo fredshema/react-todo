@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import bgDesktopDark from "./assets/images/bg-desktop-dark.jpg";
 import bgDesktop from "./assets/images/bg-desktop-light.jpg";
 import CreateTodo from "./components/CreateTodo";
+import Footer from "./components/Footer";
 import Header from "./components/Header";
 import TodosList from "./components/TodosList";
 
@@ -12,8 +13,27 @@ function App() {
   const [bg, setBg] = useState(bgDesktop);
 
   useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
+
+  useEffect(() => {
     setBg(theme === "light" ? bgDesktop : bgDesktopDark);
   });
+
+  const toggleCheck = (id: number) => {
+    const newTodos = todos.map((todo: any) => {
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+
+  const clearCompleted = () => {
+    const newTodos = todos.filter((todo: any) => !todo.completed);
+    setTodos(newTodos);
+  };
 
   return (
     <>
@@ -41,7 +61,12 @@ function App() {
           <div style={{ marginTop: 60 }}></div>
           <Header setTheme={setTheme} theme={theme} />
           <CreateTodo setTodos={setTodos} />
-          <TodosList todos={todos} />
+          <TodosList
+            todos={todos}
+            toggle={toggleCheck}
+            clearCompleted={clearCompleted}
+          />
+          <Footer />
         </div>
       </div>
     </>
