@@ -6,12 +6,12 @@ function CreateTodo({ setTodos }: { setTodos: Function }) {
     if (e.key === "Enter") {
       const input = String((e.target as HTMLInputElement).value);
       setTodos((prevTodos: ITodo[]) => [
-        ...prevTodos,
         {
           id: new Date().getTime(),
           title: input,
           completed: false,
         },
+        ...prevTodos,
       ]);
       (e.target as HTMLInputElement).value = "";
     }

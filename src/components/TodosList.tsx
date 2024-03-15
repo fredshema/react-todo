@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
+import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import EmptyImg from "../assets/images/3016826.webp";
 import "../styles/todo.css";
 import { ITodo } from "../types/Todo";
@@ -19,13 +19,15 @@ const reorder = (list: ITodo[], startIndex: any, endIndex: any) => {
 export default function TodosList({
   todos,
   toggle,
-  clearCompleted,
   deleteTodo,
+  setTodos,
+  clearCompleted,
 }: {
   todos: ITodo[];
   toggle: Function;
-  clearCompleted: Function;
+  setTodos: Function;
   deleteTodo: Function;
+  clearCompleted: Function;
 }) {
   const [filter, setFilter] = useState<IFilter>("all");
 
@@ -36,20 +38,19 @@ export default function TodosList({
   });
 
   const leftItems = filteredTodos.filter((todo) => !todo.completed).length;
-  const [items, setItems] = useState(filteredTodos);
 
   const onDragEnd = (result: any) => {
     if (!result.destination) {
       return;
     }
 
-    setItems(reorder(items, result.source.index, result.destination.index));
+    setTodos(reorder(todos, result.source.index, result.destination.index));
   };
 
   return (
     <>
       <div className="row todos-list rounded flex-wrap shadow-md">
-        {todos.length === 0 && (
+        {filteredTodos.length === 0 && (
           <div className="col-12 flex-center flex-col py-3">
             <img
               src={EmptyImg}
@@ -60,33 +61,21 @@ export default function TodosList({
             <p className="my-0">Waiting for new tasks</p>
           </div>
         )}
-        {todos.length > 0 && (
+        {filteredTodos.length > 0 && (
           <div className="col-12">
             <ul className="list-group">
               <DragDropContext onDragEnd={onDragEnd}>
                 <Droppable droppableId="droppable">
                   {(provided) => (
                     <div {...provided.droppableProps} ref={provided.innerRef}>
-                      {items.map((todo, index) => (
-                        <Draggable
+                      {filteredTodos.map((todo, index) => (
+                        <Todo
                           key={todo.id}
-                          draggableId={todo.id.toString()}
+                          todo={todo}
                           index={index}
-                        >
-                          {(provided) => (
-                            <div
-                              ref={provided.innerRef}
-                              {...provided.draggableProps}
-                              {...provided.dragHandleProps}
-                            >
-                              <Todo
-                                todo={todo}
-                                toggle={toggle}
-                                deleteTodo={deleteTodo}
-                              />
-                            </div>
-                          )}
-                        </Draggable>
+                          toggle={toggle}
+                          deleteTodo={deleteTodo}
+                        />
                       ))}
                       {provided.placeholder}
                     </div>

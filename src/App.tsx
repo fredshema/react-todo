@@ -34,21 +34,20 @@ function App() {
 
   return (
     <>
-      <div>
-        <div id="header-bg"></div>
-        <div className="px-5 mx-auto" style={{ maxWidth: 580 }}>
-          <div style={{ marginTop: 80 }}></div>
-          <Header />
-          <div style={{ marginTop: 60 }}></div>
-          <CreateTodo setTodos={setTodos} />
-          <TodosList
-            todos={todos}
-            toggle={toggleCheck}
-            clearCompleted={clearCompleted}
-            deleteTodo={deleteTodo}
-          />
-          <Footer />
-        </div>
+      <div id="header-bg"></div>
+      <div className="px-5 mx-auto" style={{ maxWidth: 580 }}>
+        <div style={{ marginTop: 80 }}></div>
+        <Header />
+        <div style={{ marginTop: 60 }}></div>
+        <CreateTodo setTodos={setTodos} />
+        <TodosList
+          todos={todos}
+          setTodos={setTodos}
+          toggle={toggleCheck}
+          clearCompleted={clearCompleted}
+          deleteTodo={deleteTodo}
+        />
+        <Footer />
       </div>
     </>
   );

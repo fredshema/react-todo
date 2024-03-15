@@ -23,6 +23,7 @@
 
   .check {
     margin-right: 1rem;
+    z-index: 1;
   }
 
   p {
@@ -38,6 +39,7 @@
   .close{
     display: none;
     cursor: pointer;
+    z-index: 1;
   }
 
   &:hover .close {
