@@ -2,7 +2,7 @@
   margin-left: auto;
   margin-right: auto;
   margin-top: 2rem;
-  background-color: var(--very-dark-gray-blue);
+  background-color: var(--secondary-background-color);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -20,10 +20,10 @@
       background-color: transparent;
       font-size: 1rem;
       font-weight: 500;
-      color: var(--light-gray-blue);
+      color: var(--text-color);
 
       &::placeholder {
-        color: var(--light-gray-blue);
+        color: var(--muted-text-color);
       }
     }
 

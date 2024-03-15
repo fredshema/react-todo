@@ -15,7 +15,7 @@ export default function Navigation({
     <>
       <section id="nav" className="row justify-between p-3 text-sm">
         <div className="col-auto">
-          <span>{length} Items left</span>
+          <span className="text-muted">{length} Items left</span>
         </div>
         <div className="col">
           <div className="row justify-around text-center navs">

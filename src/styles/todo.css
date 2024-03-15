@@ -1,18 +1,33 @@
 .todos-list {
-  background-color: var(--very-dark-gray-blue);
+  background-color: var(--secondary-background-color);
   margin-top: 2rem;
 }
 
 .todo {
   padding: 1rem;
   border-radius: none;
-  border-bottom: 1px solid var(--dark-gray-blue);
+  border-bottom: 1px solid var(--border-color);
 
   .check {
     margin-right: 1rem;
   }
 
+  p {
+    margin-top: 5px;
+    line-height: 1;
+  }
+
   input[type="checkbox"]:checked + span {
     text-decoration: line-through;
+    color: var(--muted-text-color);
+  }
+
+  .close{
+    display: none;
+    cursor: pointer;
+  }
+
+  &:hover .close {
+    display: block;
   }
 }

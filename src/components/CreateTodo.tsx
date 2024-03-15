@@ -4,11 +4,12 @@ import { ITodo } from "../types/Todo";
 function CreateTodo({ setTodos }: { setTodos: Function }) {
   const handleCreateTodo = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
+      const input = String((e.target as HTMLInputElement).value);
       setTodos((prevTodos: ITodo[]) => [
         ...prevTodos,
         {
           id: new Date().getTime(),
-          title: (e.target as HTMLInputElement).value,
+          title: input,
           completed: false,
         },
       ]);
