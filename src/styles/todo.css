@@ -5,8 +5,21 @@
 
 .todo {
   padding: 1rem;
-  border-radius: none;
-  border-bottom: 1px solid var(--border-color);
+  border-radius: 5px;
+  background-color: var(--secondary-background-color);
+  position: relative;
+  margin-bottom: 1px;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
+    border-bottom: 1px solid var(--border-color);
+  }
 
   .check {
     margin-right: 1rem;

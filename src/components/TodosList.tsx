@@ -35,9 +35,8 @@ export default function TodosList({
     if (filter === "completed") return todo.completed;
   });
 
-  const leftItems = todos.filter((todo) => !todo.completed).length;
-
-  const [items, setItems] = useState(todos);
+  const leftItems = filteredTodos.filter((todo) => !todo.completed).length;
+  const [items, setItems] = useState(filteredTodos);
 
   const onDragEnd = (result: any) => {
     if (!result.destination) {
@@ -68,9 +67,9 @@ export default function TodosList({
                 <Droppable droppableId="droppable">
                   {(provided) => (
                     <div {...provided.droppableProps} ref={provided.innerRef}>
-                      {filteredTodos.map((todo, index) => (
+                      {items.map((todo, index) => (
                         <Draggable
-                          key={todo.id.toString()}
+                          key={todo.id}
                           draggableId={todo.id.toString()}
                           index={index}
                         >

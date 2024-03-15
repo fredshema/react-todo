@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
@@ -18,7 +17,7 @@ if (theme !== null) {
 }
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+  <>
     <App />
     <div className="attribution">
       Challenge by&nbsp;
@@ -31,5 +30,5 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       </a>
       .
     </div>
-  </React.StrictMode>
+  </>
 );
