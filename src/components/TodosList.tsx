@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import EmptyImg from "../assets/images/3016826.webp";
 import "../styles/todo.css";
@@ -20,22 +20,25 @@ export default function TodosList({
   todos,
   toggle,
   deleteTodo,
-  setTodos,
   clearCompleted,
 }: {
   todos: ITodo[];
   toggle: Function;
-  setTodos: Function;
   deleteTodo: Function;
   clearCompleted: Function;
 }) {
   const [filter, setFilter] = useState<IFilter>("all");
+  const [filteredTodos, setFilteredTodos] = useState<ITodo[]>(todos);
 
-  const filteredTodos = todos.filter((todo) => {
-    if (filter === "all") return true;
-    if (filter === "active") return !todo.completed;
-    if (filter === "completed") return todo.completed;
-  });
+  useEffect(() => {
+    const filteredTodos = todos.filter((todo) => {
+      if (filter === "all") return true;
+      if (filter === "active") return !todo.completed;
+      if (filter === "completed") return todo.completed;
+    });
+
+    setFilteredTodos(filteredTodos);
+  }, [todos, filter]);
 
   const leftItems = filteredTodos.filter((todo) => !todo.completed).length;
 
@@ -44,7 +47,12 @@ export default function TodosList({
       return;
     }
 
-    setTodos(reorder(todos, result.source.index, result.destination.index));
+    const reorderedTodos = reorder(
+      filteredTodos,
+      result.source.index,
+      result.destination.index
+    );
+    setFilteredTodos(reorderedTodos);
   };
 
   return (

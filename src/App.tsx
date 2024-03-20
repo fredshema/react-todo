@@ -42,7 +42,6 @@ function App() {
         <CreateTodo setTodos={setTodos} />
         <TodosList
           todos={todos}
-          setTodos={setTodos}
           toggle={toggleCheck}
           clearCompleted={clearCompleted}
           deleteTodo={deleteTodo}
