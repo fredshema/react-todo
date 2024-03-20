@@ -34,8 +34,8 @@
   --background-color: hsl(236, 33%, 92%);
   --text-color: hsl(235, 19%, 35%);
   --hovered-text-color: hsl(235, 19%, 35%);
-  --muted-text-color: hsl(236, 9%, 61%);
-  --border-color: hsl(236, 33%, 92%);
+  --muted-text-color: hsl(237, 8%, 55%);
+  --border-color: hsl(235, 7%, 70%);
   --header-bg: url("assets/images/bg-desktop-light.jpg");
   --mobile-header-bg: url("assets/images/bg-mobile-light.jpg");
 }

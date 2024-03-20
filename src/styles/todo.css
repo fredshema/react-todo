@@ -31,7 +31,7 @@
     line-height: 1;
   }
 
-  input[type="checkbox"]:checked + span {
+  input[type="checkbox"]:checked + .col p {
     text-decoration: line-through;
     color: var(--muted-text-color);
   }
